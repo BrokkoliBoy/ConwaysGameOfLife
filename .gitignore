@@ -6,7 +6,7 @@
 /[Tt]emp/
 /[Oo]bj/
 #/[Bb]uild/
-#/[Bb]uilds/
+/[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 
@@ -54,6 +54,9 @@ ExportedObj/
 
 # Unity3D generated file on crash reports
 sysinfo.txt
+
+# Unity Editor version-upgrade migration report
+UpgradeLog.htm
 
 # Builds
 *.apk
