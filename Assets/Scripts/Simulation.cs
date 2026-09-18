@@ -8,8 +8,10 @@ namespace Gavi
     public class Simulation : MonoBehaviour
     {
         public static Simulation Instance;
-        
+
         [SerializeField][Range(0.0001f, 100f)] private float _stepsPerSecond = 3;
+
+        public GameRule CurrentRule = GameRule.Conway;
 
         public bool IsRunning { get; private set; }
         private float _stepRdy;

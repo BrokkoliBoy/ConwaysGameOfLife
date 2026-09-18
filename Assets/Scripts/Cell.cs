@@ -52,19 +52,14 @@ namespace Gavi
         {
             _willBeUnchanged = false;
 
-            // bool isEven = AliveNeighbours % 2 == 0;
-            // if (!IsAlive && !isEven)
-            //     _willBeAlive = true;
-            // else if (IsAlive && isEven)
-            //     _willBeAlive = false;
-            // else
-            //     _willBeUnchanged = true;
+            GameRule rule = Simulation.Instance.CurrentRule;
+            int aliveNeighbours = AliveNeighbours;
 
-            if (!IsAlive && AliveNeighbours == 3) // revive
+            if (!IsAlive && Rules.ShouldBeBorn(rule, aliveNeighbours))
                 _willBeAlive = true;
-            else if (IsAlive && AliveNeighbours < 2) // die of lonelynes
-                _willBeAlive = false;
-            else if (IsAlive && AliveNeighbours > 3) // die of overpopulation
+            else if (IsAlive && Rules.ShouldSurvive(rule, aliveNeighbours))
+                _willBeUnchanged = true;
+            else if (IsAlive)
                 _willBeAlive = false;
             else
                 _willBeUnchanged = true;
