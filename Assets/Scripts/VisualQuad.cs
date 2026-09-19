@@ -7,9 +7,8 @@ namespace Gavi
 {
     public class VisualQuad : Visual
     {
-        [SerializeField] private bool _fade = true;
-        [Tooltip("In seconds.")]
-        [SerializeField] private float _fadeTimeNoSimulation = 0.5f;
+        [Tooltip("In seconds. Shared by all cells, controllable at runtime via the UI.")]
+        public static float FadeTime = 0.5f;
         [Tooltip("Tells over how many frames the fading should take place.")]
         [SerializeField] private float _fadeTimeSimulatingMultiplier = 3;
         [SerializeField] private float _fadeTimeSimulatingMin = 0.3f;
@@ -34,7 +33,7 @@ namespace Gavi
                 _renderer.sharedMaterial = _materialAlive;
             }
             else
-                FadeOut(Simulation.Instance.IsRunning ? Mathf.Clamp(Simulation.Instance.StepTime * _fadeTimeSimulatingMultiplier, _fadeTimeSimulatingMin, _fadeTimeSimulatingMax) : _fadeTimeNoSimulation);
+                FadeOut(Simulation.Instance.IsRunning ? Mathf.Clamp(Simulation.Instance.StepTime * _fadeTimeSimulatingMultiplier, _fadeTimeSimulatingMin, _fadeTimeSimulatingMax) : FadeTime);
         }
 
         private void FadeOut(float time)
@@ -46,7 +45,7 @@ namespace Gavi
 
         private IEnumerator PerformFadeOut(float time)
         {
-            if (time < 0 || !_fade)
+            if (time <= 0)
             {
                 _renderer.sharedMaterial = _materialDead;
                 yield break;

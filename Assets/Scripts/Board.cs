@@ -11,9 +11,8 @@ namespace Gavi
         public static Board Instance;
 
         [SerializeField] private float _aliveChance = 0.5f;
-        [SerializeField] private int _seed = -1;
-        [SerializeField] private int _lastUsedSeed;
-        
+        public float AliveChance { get => _aliveChance; set => _aliveChance = Mathf.Clamp01(value); }
+
         [Header("- References -")]
         [SerializeField] private Vector2Int _boardSize = new Vector2Int(10, 10);
         [SerializeField] private Cell _cellPrefab;
@@ -72,24 +71,19 @@ namespace Gavi
                     Cells[x][y].PostInitialize();
                 }
             }
-            
-            // RandomizeAlive(true);
         }
         #endregion
 
 
         #region Cell Control
-        public void RandomizeAlive(bool useSeed) // if useSpecifiedSeed == false, we choose a random seed
+        public void Randomize()
         {
-            int seed = useSeed ? _seed : Random.Range(0, 10000000) ;
-            Random.InitState(seed);
-            _lastUsedSeed = seed;
             foreach (Cell cell in Cells1D)
                 cell.IsAlive = Random.Range(0f, 1f) < _aliveChance;
             Simulation.Instance.ResetGenerationCount();
         }
 
-        public void KillAllCells()
+        public void Clear()
         {
             foreach (Cell cell in Cells1D)
                 cell.IsAlive = false;

@@ -10,6 +10,7 @@ namespace Gavi
         public static Simulation Instance;
 
         [SerializeField][Range(0.0001f, 100f)] private float _stepsPerSecond = 3;
+        public float StepsPerSecond { get => _stepsPerSecond; set => _stepsPerSecond = Mathf.Max(0.0001f, value); }
 
         public GameRule CurrentRule = GameRule.Conway;
 
@@ -70,9 +71,20 @@ namespace Gavi
             IsRunning = false;
         }
 
-        private void StopSimulation()
+        public void Resume() => StartSimulation();
+        public void Pause() => PauseSimulation();
+
+        public void ToggleSimulation()
         {
-            
+            if (IsRunning)
+                Pause();
+            else
+                Resume();
+        }
+
+        public void SetRule(GameRule rule)
+        {
+            CurrentRule = rule;
         }
         #endregion
 

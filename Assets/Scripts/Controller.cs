@@ -11,7 +11,6 @@ namespace Gavi
         [SerializeField] private KeyCode _keyCodeGoBackInHistory = KeyCode.A;
         [Space]
         [SerializeField] private KeyCode _keyCodeRandomize = KeyCode.R;
-        [SerializeField] private KeyCode _keyCodeRandomizeWithSeed = KeyCode.F;
         [SerializeField] private KeyCode _keyCodeKillAllCells = KeyCode.C;
         [Space] 
         [SerializeField] private KeyCode _keyCodeStartSimulation = KeyCode.Space;
@@ -27,11 +26,9 @@ namespace Gavi
                 Simulation.Instance.PerformStep();
                 
             else if (Input.GetKeyDown(_keyCodeRandomize))
-                Board.Instance.RandomizeAlive(false);
-            else if (Input.GetKeyDown(_keyCodeRandomizeWithSeed))
-                Board.Instance.RandomizeAlive(true);
+                Board.Instance.Randomize();
             else if (Input.GetKeyDown(_keyCodeKillAllCells))
-                Board.Instance.KillAllCells();
+                Board.Instance.Clear();
             
             else if (Input.GetKeyDown(_keyCodeStartSimulation) && !Simulation.Instance.IsRunning)
                 Simulation.Instance.StartSimulation();
