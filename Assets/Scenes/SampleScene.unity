@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca73215d0a9f7043840ecef7dc9d0fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aliveChance: 0.2
+  _aliveChance: 0.25
   _boardSize: {x: 59, y: 39}
   _cellPrefab: {fileID: -6725116589779403912, guid: 82204a5039ad8014fa9372e580fb35c1, type: 3}
   _parentCells: {fileID: 1897464958}
@@ -858,7 +858,9 @@ MonoBehaviour:
   _textFadeTimeValue: {fileID: 730671600}
   _dropdownRule: {fileID: 1102565217}
   _buttonPauseResume: {fileID: 934708050}
-  _textPauseResumeLabel: {fileID: 934708049}
+  _iconPauseResume: {fileID: 934708049}
+  _iconPause: {fileID: 21300000, guid: 343bf3a68483acd45832352173f3d4bf, type: 3}
+  _iconResume: {fileID: 21300000, guid: 8e4f6c24273094c418f265003864caa8, type: 3}
   _buttonStepForward: {fileID: 147377317}
   _buttonRandomize: {fileID: 1263473166}
   _buttonClear: {fileID: 997337643}
@@ -1465,6 +1467,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u25B6"
       objectReference: {fileID: 0}
+    - target: {fileID: 5967377741425710280, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e4f6c24273094c418f265003864caa8, type: 3}
     - target: {fileID: 7303219091611260694, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1557,15 +1563,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &934708049 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5936256404728406453, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5967377741425710280, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
   m_PrefabInstance: {fileID: 934708047}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &934708050 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6570229522671020224, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
@@ -1959,6 +1965,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u2298"
       objectReference: {fileID: 0}
+    - target: {fileID: 5967377741425710280, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 29ab1bd6fe631704bb78a870e3ba044b, type: 3}
     - target: {fileID: 7303219091611260694, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2419,6 +2429,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u21BB"
       objectReference: {fileID: 0}
+    - target: {fileID: 5967377741425710280, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0bc0ca66b14a9894ca989117919a8a24, type: 3}
     - target: {fileID: 7303219091611260694, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3356,6 +3370,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1575509012}
     m_Modifications:
     - target: {fileID: 1413710245614223528, guid: 107237dc66a6f4146aa2637098774b6a, type: 3}
+      propertyPath: m_Value
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413710245614223528, guid: 107237dc66a6f4146aa2637098774b6a, type: 3}
       propertyPath: m_MaxValue
       value: 2
       objectReference: {fileID: 0}
@@ -4001,6 +4019,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u23ED"
       objectReference: {fileID: 0}
+    - target: {fileID: 5967377741425710280, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 01f08de66ddebfa4c8f12ad9098833fb, type: 3}
     - target: {fileID: 7303219091611260694, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4094,6 +4116,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1575509012}
     m_Modifications:
+    - target: {fileID: 1413710245614223528, guid: 107237dc66a6f4146aa2637098774b6a, type: 3}
+      propertyPath: m_Value
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2496454692670904696, guid: 107237dc66a6f4146aa2637098774b6a, type: 3}
       propertyPath: m_Name
       value: Density Slider

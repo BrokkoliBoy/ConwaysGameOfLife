@@ -36,7 +36,9 @@ namespace Gavi
 
         [Header("- Buttons -")]
         [SerializeField] private Button _buttonPauseResume;
-        [SerializeField] private TextMeshProUGUI _textPauseResumeLabel;
+        [SerializeField] private Image _iconPauseResume;
+        [SerializeField] private Sprite _iconPause;
+        [SerializeField] private Sprite _iconResume;
         [SerializeField] private Button _buttonStepForward;
         [SerializeField] private Button _buttonRandomize;
         [SerializeField] private Button _buttonClear;
@@ -49,13 +51,10 @@ namespace Gavi
             BindListeners();
         }
 
-        private const string PauseIcon = "⏸";
-        private const string ResumeIcon = "▶";
-
         private void Update()
         {
             _textGenerationCount.text = "" + Simulation.Instance.Generation;
-            _textPauseResumeLabel.text = Simulation.Instance.IsRunning ? PauseIcon : ResumeIcon;
+            _iconPauseResume.sprite = Simulation.Instance.IsRunning ? _iconPause : _iconResume;
         }
         #endregion
 
