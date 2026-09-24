@@ -85,6 +85,7 @@ namespace Gavi
 
         public void Clear()
         {
+            Simulation.Instance.Pause();
             foreach (Cell cell in Cells1D)
                 cell.IsAlive = false;
             Simulation.Instance.ResetGenerationCount();

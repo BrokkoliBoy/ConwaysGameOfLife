@@ -15,8 +15,7 @@ namespace Gavi
         public GameRule CurrentRule = GameRule.Conway;
 
         public bool IsRunning { get; private set; }
-        private float _stepRdy;
-        private float _lastStepsPerSecond;
+        private float _lastStepTime;
         public float StepTime => 1 / _stepsPerSecond;
         public int Generation { get; private set; }
 
@@ -42,17 +41,13 @@ namespace Gavi
         {
             if (!Board.Instance.IsPopulated)
                 return;
-            _stepRdy = StepTime + GaviTime.Time;
+            _lastStepTime = GaviTime.Time;
             IsRunning = true;
         }
 
         private void UpdateSimulation()
         {
-            if (_stepsPerSecond != _lastStepsPerSecond)
-                _stepRdy = StepTime + GaviTime.Time;
-            _lastStepsPerSecond = _stepsPerSecond;
-            
-            if (_stepRdy < GaviTime.Time)
+            if (GaviTime.Time - _lastStepTime >= StepTime)
                 PerformStep();
         }
 
@@ -62,7 +57,7 @@ namespace Gavi
                 cell.PrepareStep();
             foreach (Cell cell in Board.Instance.Cells1D)
                 cell.PerformStep();
-            _stepRdy = StepTime + GaviTime.Time;
+            _lastStepTime = GaviTime.Time;
             Generation++;
         }
 

@@ -9,10 +9,6 @@ namespace Gavi
     {
         [Tooltip("In seconds. Shared by all cells, controllable at runtime via the UI.")]
         public static float FadeTime = 0.5f;
-        [Tooltip("Tells over how many frames the fading should take place.")]
-        [SerializeField] private float _fadeTimeSimulatingMultiplier = 3;
-        [SerializeField] private float _fadeTimeSimulatingMin = 0.3f;
-        [SerializeField] private float _fadeTimeSimulatingMax = 1f;
         [SerializeField] private AnimationCurve _fadeCurve = AnimationCurve.Linear(0, 1, 1, 0);
 
         
@@ -33,7 +29,7 @@ namespace Gavi
                 _renderer.sharedMaterial = _materialAlive;
             }
             else
-                FadeOut(Simulation.Instance.IsRunning ? Mathf.Clamp(Simulation.Instance.StepTime * _fadeTimeSimulatingMultiplier, _fadeTimeSimulatingMin, _fadeTimeSimulatingMax) : FadeTime);
+                FadeOut(FadeTime);
         }
 
         private void FadeOut(float time)

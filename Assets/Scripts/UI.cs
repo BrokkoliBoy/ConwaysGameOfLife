@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Gavi
@@ -15,10 +16,10 @@ namespace Gavi
                  "steps-per-second values at fine resolution and the back covers large values coarsely. " +
                  "Must stay monotonically increasing from (0,0) to (1,1).")]
         [SerializeField] private AnimationCurve _stepsPerSecondCurve = new AnimationCurve(
-            new Keyframe(0f, 0f, 0f, 0f),
-            new Keyframe(1f, 1f, 2f, 2f));
+            new Keyframe(0f, 0f, 0f, 0.6f),
+            new Keyframe(1f, 1f, 1.4f, 1.4f));
         [SerializeField] private float _stepsPerSecondMin = 0.1f;
-        [SerializeField] private float _stepsPerSecondMax = 20f;
+        [SerializeField] private float _stepsPerSecondMax = 50f;
         [SerializeField] private Slider _sliderStepsPerSecond;
         [SerializeField] private TextMeshProUGUI _textStepsPerSecondValue;
 
@@ -79,13 +80,18 @@ namespace Gavi
             _sliderFadeTime.onValueChanged.AddListener(SetFadeTime);
             _dropdownRule.onValueChanged.AddListener(SetRule);
 
-            _buttonPauseResume.onClick.AddListener(() => Simulation.Instance.ToggleSimulation());
-            _buttonStepForward.onClick.AddListener(() => Simulation.Instance.PerformStep());
-            _buttonRandomize.onClick.AddListener(() => Board.Instance.Randomize());
-            _buttonClear.onClick.AddListener(() => Board.Instance.Clear());
+            _buttonPauseResume.onClick.AddListener(() => { Simulation.Instance.ToggleSimulation(); ClearSelection(); });
+            _buttonStepForward.onClick.AddListener(() => { Simulation.Instance.PerformStep(); ClearSelection(); });
+            _buttonRandomize.onClick.AddListener(() => { Board.Instance.Randomize(); ClearSelection(); });
+            _buttonClear.onClick.AddListener(() => { Board.Instance.Clear(); ClearSelection(); });
         }
 
-        private static string FormatFloat(float value) => value.ToString("0.##");
+        private static string FormatFloat(float value) => value.ToString("0.0");
+
+        // Buttons keep keyboard focus after being clicked, so a later "Submit" keypress
+        // (e.g. Space, used for Pause/Resume) would silently re-trigger whichever button
+        // was clicked last. Clearing the selection after every click prevents that.
+        private static void ClearSelection() => EventSystem.current.SetSelectedGameObject(null);
 
         // Numerically inverts a monotonically increasing curve from (0,0) to (1,1) via bisection,
         // since AnimationCurve has no built-in inverse.
