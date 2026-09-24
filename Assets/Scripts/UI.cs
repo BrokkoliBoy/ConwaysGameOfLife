@@ -49,10 +49,13 @@ namespace Gavi
             BindListeners();
         }
 
+        private const string PauseIcon = "⏸";
+        private const string ResumeIcon = "▶";
+
         private void Update()
         {
             _textGenerationCount.text = "" + Simulation.Instance.Generation;
-            _textPauseResumeLabel.text = Simulation.Instance.IsRunning ? "Pause" : "Resume";
+            _textPauseResumeLabel.text = Simulation.Instance.IsRunning ? PauseIcon : ResumeIcon;
         }
         #endregion
 
