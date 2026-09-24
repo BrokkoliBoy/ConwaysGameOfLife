@@ -2,7 +2,7 @@
 
 **Status:** Finished  |  **Built:** 2021  |  **Role:** Solo developer
 
-A from-scratch Unity implementation of Conway's Game of Life, built in a single weekend to win a bet.
+A from-scratch Unity implementation of Conway's Game of Life, built in a single weekend to win a bet. I came back later and added a full settings panel and several additional rule variants on top of that original build.
 
 *(GIF idea, provisional: a short intro clip giving a first overall impression before reading further, e.g. an interesting pattern evolving on the board for a few seconds. The one GIF a skimming reader sees before deciding whether to read on.)*
 
@@ -31,11 +31,14 @@ Each generation, every cell first counts its 8 neighbors (with wraparound) and d
 - Clear the board back to empty
   - *GIF idea: clearing a populated board.*
 - Generation counter
+- Five selectable rulesets — Conway's classic rules, HighLife, Day and Night, Seeds, and Maze — each producing very different behavior from the same simulation
+  - *GIF idea: switching rulesets on a running board and watching the behavior change.*
+- Settings panel with icon buttons and sliders for simulation speed, starting density, and cell fade time
 
 ## Learnings
 **Going back in time doesn't work the way it seems like it should.** While building this I assumed I'd eventually add a "step backward" feature and reserved a key binding for it early on. It turns out you can't just run the rules in reverse: several different previous generations can produce the same next generation, so "the generation before this one" is not something you can reconstruct from the current state alone. You'd have to record history separately as you go. I never removed the leftover key binding, so a "go back" input exists in the code with nothing behind it.
 
-**Deliberately stopping was the right call.** After winning the bet I had a running list of ways to keep extending this: a genuinely unbounded board (and a more efficient way to render cells than instantiating a prefab per cell, which is what happens now), the ability to enable or disable individual cells so you can shape your own play area instead of one big rectangle, a library of well-known patterns you could drag onto the board, undo via a stored generation history (with the state of a whole generation packed into bits instead of one bool per cell, for a much smaller memory footprint), and swappable rule variants. I chose not to build any of it, on purpose. I tend to keep projects open-ended rather than calling them finished, and having one project I can point to as genuinely done, instead of one more half-built thing on the pile, was worth more to me than any of those features.
+**Deliberately stopping was the right call, but I did come back once.** After winning the bet I had a running list of ways to keep extending this: a genuinely unbounded board (and a more efficient way to render cells than instantiating a prefab per cell, which is what happens now), the ability to enable or disable individual cells so you can shape your own play area instead of one big rectangle, a library of well-known patterns you could drag onto the board, undo via a stored generation history (with the state of a whole generation packed into bits instead of one bool per cell, for a much smaller memory footprint), swappable rule variants, and a proper settings UI instead of Inspector-only controls. I originally chose not to build any of it, on purpose. I tend to keep projects open-ended rather than calling them finished, and having one project I can point to as genuinely done, instead of one more half-built thing on the pile, was worth more to me than any of those features. Later I picked the two cheapest, highest-value items off that list — rule variants and a settings panel — and added them on top of the finished weekend build. The rest (unbounded board, per-cell enable/disable, pattern library, undo) stayed out of scope.
 
 ## Build / Play
 Not published yet. A build and a short gameplay clip are planned but not recorded.
