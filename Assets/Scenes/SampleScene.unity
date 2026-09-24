@@ -1463,7 +1463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5936256404728406453, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
       propertyPath: m_text
-      value: Pause
+      value: "\u25B6"
       objectReference: {fileID: 0}
     - target: {fileID: 7303219091611260694, guid: ba534dc8404b0924cbaa10ff6badf34e, type: 3}
       propertyPath: m_Pivot.x
