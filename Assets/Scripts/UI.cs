@@ -64,7 +64,7 @@ namespace Gavi
         {
             float stepsPerSecondT = Mathf.InverseLerp(_stepsPerSecondMin, _stepsPerSecondMax, Simulation.Instance.StepsPerSecond);
             _sliderStepsPerSecond.SetValueWithoutNotify(InverseEvaluateMonotonic(_stepsPerSecondCurve, stepsPerSecondT));
-            _textStepsPerSecondValue.text = FormatFloat(Simulation.Instance.StepsPerSecond);
+            _textStepsPerSecondValue.text = FormatStepsPerSecond(Simulation.Instance.StepsPerSecond);
 
             _sliderAliveChance.SetValueWithoutNotify(Board.Instance.AliveChance);
             _textAliveChanceValue.text = FormatFloat(Board.Instance.AliveChance);
@@ -89,6 +89,11 @@ namespace Gavi
         }
 
         private static string FormatFloat(float value) => value.ToString("0.0");
+
+        // Below 1, a rounded integer would always show "0", so keep one decimal there;
+        // at 1 and above, round to a whole number since that's plenty precise for a speed dial.
+        private static string FormatStepsPerSecond(float value) =>
+            value < 1f ? value.ToString("0.0") : Mathf.RoundToInt(value).ToString();
 
         // Buttons keep keyboard focus after being clicked, so a later "Submit" keypress
         // (e.g. Space, used for Pause/Resume) would silently re-trigger whichever button
@@ -118,7 +123,7 @@ namespace Gavi
         {
             float t = _stepsPerSecondCurve.Evaluate(sliderValue);
             Simulation.Instance.StepsPerSecond = Mathf.Lerp(_stepsPerSecondMin, _stepsPerSecondMax, t);
-            _textStepsPerSecondValue.text = FormatFloat(Simulation.Instance.StepsPerSecond);
+            _textStepsPerSecondValue.text = FormatStepsPerSecond(Simulation.Instance.StepsPerSecond);
         }
 
         public void SetAliveChance(float value)
