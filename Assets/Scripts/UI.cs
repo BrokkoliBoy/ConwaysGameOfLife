@@ -33,6 +33,16 @@ namespace Gavi
 
         [Header("- Rule -")]
         [SerializeField] private TMP_Dropdown _dropdownRule;
+        [SerializeField] private TextMeshProUGUI _textRuleDescription;
+
+        private static readonly string[] RuleDescriptions =
+        {
+            "The original rules: a balance of chaos and stability, with gliders and oscillators.",
+            "Like Conway, but cells are also born with 6 neighbors - known for self-replicating patterns.",
+            "Symmetric between alive and dead. Spreads into large, blocky regions.",
+            "Every cell dies each step; births only at exactly 2 neighbors. Chaotic and explosive.",
+            "Cells survive easily, so the board settles into stable corridors instead of movement.",
+        };
 
         [Header("- Buttons -")]
         [SerializeField] private Button _buttonPauseResume;
@@ -73,6 +83,7 @@ namespace Gavi
             _textFadeTimeValue.text = FormatFloat(VisualQuad.FadeTime);
 
             _dropdownRule.SetValueWithoutNotify((int)Simulation.Instance.CurrentRule);
+            _textRuleDescription.text = RuleDescriptions[(int)Simulation.Instance.CurrentRule];
         }
 
         private void BindListeners()
@@ -141,6 +152,11 @@ namespace Gavi
         public void SetRule(int ruleIndex)
         {
             Simulation.Instance.SetRule((GameRule)ruleIndex);
+            _textRuleDescription.text = RuleDescriptions[ruleIndex];
+            // The dropdown implements ISubmitHandler, so it keeps keyboard focus after picking an
+            // option and a later Space press (Pause/Resume) would silently reopen it. Same fix as
+            // the buttons in BindListeners().
+            ClearSelection();
         }
         #endregion
     }

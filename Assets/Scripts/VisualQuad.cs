@@ -8,7 +8,7 @@ namespace Gavi
     public class VisualQuad : Visual
     {
         [Tooltip("In seconds. Shared by all cells, controllable at runtime via the UI.")]
-        public static float FadeTime = 0.2f;
+        public static float FadeTime = 0.5f;
         [SerializeField] private AnimationCurve _fadeCurve = AnimationCurve.Linear(0, 1, 1, 0);
 
         
