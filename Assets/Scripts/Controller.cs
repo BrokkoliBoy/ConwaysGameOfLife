@@ -35,11 +35,6 @@ namespace Gavi
             else if (Input.GetKeyDown(_keyCodePauseSimulation) && Simulation.Instance.IsRunning)
                 Simulation.Instance.PauseSimulation();
 
-            else if (Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetKeyDown(KeyCode.Equals))
-                AudioListener.volume = Mathf.Clamp01(AudioListener.volume + 0.1f);
-            else if (Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetKeyDown(KeyCode.Minus))
-                AudioListener.volume = Mathf.Clamp01(AudioListener.volume - 0.1f);
-
             bool isLeftClick = Input.GetKey(KeyCode.Mouse0);
             bool isRightClick = Input.GetKey(KeyCode.Mouse1);
             if (isLeftClick)

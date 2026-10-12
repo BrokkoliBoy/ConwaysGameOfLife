@@ -1159,11 +1159,7 @@ MonoBehaviour:
 
     C - Clear
 
-    LMB/RMB - Toggle Cell
-
-    + - Volume Up
-
-    - - Volume Down'
+    LMB/RMB - Toggle Cell'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17abcb09254541e409bf22fd166b65cd, type: 2}
   m_sharedMaterial: {fileID: -3053994404904006912, guid: 17abcb09254541e409bf22fd166b65cd, type: 2}
