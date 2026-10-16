@@ -4,7 +4,7 @@
 
 A from-scratch Unity implementation of Conway's Game of Life, built in a single weekend to win a bet. I came back later and added a full settings panel and several additional rule variants on top of that original build.
 
-<!-- TODO: hero GIF (short overview clip with the settings panel visible) -->
+![Intro: Die Hard pattern, random chaos, rule sets, randomizing, simulation speed and fade duration](docs/intro.gif)
 
 ## What is it?
 A Unity simulation of Conway's Game of Life: a grid of cells that live, die, or come to life each generation based on how many neighbors are alive, following the classic ruleset (a dead cell with exactly 3 live neighbors is born, a live cell with fewer than 2 or more than 3 live neighbors dies, everything else stays the same). Click cells to toggle them alive or dead, then step through generations manually or let the simulation run automatically at an adjustable speed.
