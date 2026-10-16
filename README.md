@@ -4,7 +4,7 @@
 
 A from-scratch Unity implementation of Conway's Game of Life, built in a single weekend to win a bet. I came back later and added a full settings panel and several additional rule variants on top of that original build.
 
-*(GIF idea, provisional: a short intro clip giving a first overall impression before reading further, e.g. an interesting pattern evolving on the board for a few seconds. The one GIF a skimming reader sees before deciding whether to read on.)*
+<!-- TODO: hero GIF (short overview clip with the settings panel visible) -->
 
 ## What is it?
 A Unity simulation of Conway's Game of Life: a grid of cells that live, die, or come to life each generation based on how many neighbors are alive, following the classic ruleset (a dead cell with exactly 3 live neighbors is born, a live cell with fewer than 2 or more than 3 live neighbors dies, everything else stays the same). Click cells to toggle them alive or dead, then step through generations manually or let the simulation run automatically at an adjustable speed.
@@ -18,21 +18,20 @@ The simulation runs on a fixed-size grid rather than a truly infinite one. An un
 Each generation, every cell first counts its 8 neighbors (with wraparound) and decides its next state, and only after every cell has decided does any cell actually change. This two-pass approach matters because a cell's decision must be based on the previous generation only. If cells updated one by one in a single pass, later cells in that pass would see some neighbors that already updated and some that hadn't, corrupting the result. Simulation speed is also decoupled from the frame rate through a small time-scaling layer, so generations advance at a fixed, adjustable rate regardless of how fast the game is rendering.
 
 ## Features
-*(Placeholder note, not final: the italic lines below are provisional ideas for where a short GIF could go, added while planning what is worth recording. Not confirmed content.)*
-
 - Standard Conway's Game of Life rules on a wrapping (toroidal) grid
-  - *GIF idea: a well-known pattern (e.g. a glider) moving across the board and visibly wrapping around an edge, probably the clearest single shot of both the simulation and the toroidal topology at once.*
+
+  ![A glider gun emitting gliders](docs/glider-gun.gif)
+
 - Click and hold the mouse to set cells alive or dead
-  - *GIF idea: painting a recognizable shape onto an empty board by clicking/dragging.*
+
+  ![Building a glider by hand, then letting it run](docs/glider.gif)
+
 - Adjustable simulation speed, play/pause, and manual single-step
-  - *GIF idea: unpausing a populated board and watching it run, maybe with a visible speed change.*
 - Randomize the board, either with a fresh random seed or a fixed one for a reproducible starting pattern
-  - *GIF idea: randomizing the board a couple of times in a row.*
 - Clear the board back to empty
-  - *GIF idea: clearing a populated board.*
 - Generation counter
 - Five selectable rulesets — Conway's classic rules, HighLife, Day and Night, Seeds, and Maze — each producing very different behavior from the same simulation
-  - *GIF idea: switching rulesets on a running board and watching the behavior change.*
+  <!-- TODO: ruleset GIF (switching rules on a running board, dropdown visible) -->
 - Settings panel with icon buttons and sliders for simulation speed, starting density, and cell fade time
 
 ## Learnings
