@@ -31,7 +31,9 @@ Each generation, every cell first counts its 8 neighbors (with wraparound) and d
 - Clear the board back to empty
 - Generation counter
 - Five selectable rulesets — Conway's classic rules, HighLife, Day and Night, Seeds, and Maze — each producing very different behavior from the same simulation
-  <!-- TODO: ruleset GIF (switching rules on a running board, dropdown visible) -->
+
+  ![Switching between the five rulesets on a running board](docs/rulesets.gif)
+
 - Settings panel with icon buttons and sliders for simulation speed, starting density, and cell fade time
 
 ## Learnings
